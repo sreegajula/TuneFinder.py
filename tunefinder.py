@@ -33,8 +33,9 @@ while (i < 100):
 
 def likeSong(id):
     id = id-1
-    recList.append(songList[id])
-    print("Added " + songList[id])
+    recList.append(chart[id].title)
+    print("Added " + chart[id].title)
+    #print(recList[1])
 
 
 songid = 0
@@ -60,12 +61,14 @@ reclbl = Label(tab2, text= 'Reccomended Songs', font=("Arial", 11, "bold"), anch
 reclbl.grid(sticky = "w", column=0, row=0)
 reclbl.config(background='#1d1d1d', foreground="WHITE")
 
+recList.append("STARS")
 recid = 0
 for r in recList:
     recid = recid+1
     displaylabel2 = Label(tab2, text = r, background='#1d1d1d', font=("Arial", 10, "bold"))
     displaylabel2.grid(sticky = "w", column = 0, row = recid)
     displaylabel2.config(background = '#1d1d1d', foreground="WHITE")
+
 
 
 
