@@ -1,3 +1,4 @@
+import os
 import tkinter as tk
 from tkinter.ttk import *
 from turtle import bgcolor, color
@@ -26,6 +27,7 @@ songList = []
 recList = []
 
 i = 0
+songList.append("Alone")
 while (i < 100):
     songList.append(chart[i].title)
     i = i+1
@@ -35,7 +37,12 @@ def likeSong(id):
     id = id-1
     recList.append(chart[id].title)
     print("Added " + chart[id].title)
-    #print(recList[1])
+
+def integration(id):
+    id = id-1
+    print("Integrating " + chart[id].title)
+    os.system("python vis.py alone.wav")
+
 
 
 songid = 0
@@ -50,7 +57,11 @@ for s in songList:
 
     action_with_arg = partial(likeSong, songid)
     displaybutton = Button(tab1, text = "Like", style = "flat.TButton", command = action_with_arg)
-    displaybutton.grid(sticky = "e", column = 7, row = songid)
+    displaybutton.grid(sticky = "e", column = 1, row = songid)
+
+    intaction = partial(integration, songid)
+    displaybutton = Button(tab1, text = "Visualize", style = "flat.TButton", command = intaction)
+    displaybutton.grid(sticky = "e", column = 2, row = songid)
 
 
 
@@ -61,6 +72,8 @@ reclbl = Label(tab2, text= 'Reccomended Songs', font=("Arial", 11, "bold"), anch
 reclbl.grid(sticky = "w", column=0, row=0)
 reclbl.config(background='#1d1d1d', foreground="WHITE")
 
+
+
 recList.append("STARS")
 recid = 0
 for r in recList:
@@ -68,6 +81,10 @@ for r in recList:
     displaylabel2 = Label(tab2, text = r, background='#1d1d1d', font=("Arial", 10, "bold"))
     displaylabel2.grid(sticky = "w", column = 0, row = recid)
     displaylabel2.config(background = '#1d1d1d', foreground="WHITE")
+
+    displaylabel3 = Label(tab2, text = r, background='#1d1d1d', font=("Arial", 10, "bold"))
+    displaylabel3.grid(sticky = "w", column = 0, row = recid)
+    displaylabel3.config(background = '#1d1d1d', foreground="WHITE")
 
 
 
